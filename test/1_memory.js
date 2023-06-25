@@ -1,3 +1,9 @@
+//本课用于说明
+//1. JS开发者眼中内存基本结构(结构图, 堆, 栈)
+//2. 值类型和引用类型, 函数执行原理(压栈, 弹栈)
+
+export var TestName = "memory";
+
 //测试 函数修改传入值
 export var Answer_TestValueType = 0;
 export function TestValueType(){
