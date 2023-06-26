@@ -1,12 +1,19 @@
 {
   "name": "jsexperiment",
   "version": "1.0.0",
-  "description": "",
+  "description": "**目标**\r     本仓库的目的是为了让js的初学者可以对js的机制有更深入的了解, 比如内存分布, 函数执行原理等.",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "main": "clean.js",
+  "directories": {
+    "test": "test"
+  }
+  
 }
+
+

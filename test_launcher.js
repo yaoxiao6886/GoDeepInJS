@@ -1,4 +1,5 @@
 import * as memorySet from './test/1_memory.js';
+import * as functionSet from './test/2_function.js';
 
 function CheckAnswer(func, answer, errorlist){
     var result = func();
@@ -8,7 +9,7 @@ function CheckAnswer(func, answer, errorlist){
     }
 
     if(result != answer){
-        errorlist.push(`${func.name}`);
+        
         return 1;
     }
 
@@ -34,13 +35,32 @@ function TestSet(set){
 
     for(var i=0; i<functionNameSet.length; i++){
         var funcName = functionNameSet[i];
-        var result = CheckAnswer( memorySet[funcName], memorySet["Answer_"+funcName], errorList);
+        var result = -1;
+        
+        if(funcName.indexOf("FillIn_")!=-1){
+            var fillInResult = set[funcName]();
+            switch(fillInResult){
+                case true:
+                    result = 2;
+                    break;
+                case false:
+                    result = 1;
+                    break;
+                default:
+                    result = 0;
+                    break;
+            }
+        }else{
+            result = CheckAnswer( set[funcName], set["Answer_"+funcName], errorList);
+        }
+       
         switch(result){
             case 0:
                 ignoreCount++;
                 break;
             case 1:
                 errorCount++;
+                errorList.push(`${funcName}`);
                 break;
             case 2:
                 correctCount++;
@@ -100,4 +120,4 @@ function TestSets(sets){
     }
 }
 
-TestSets([memorySet]);
+TestSets([memorySet, functionSet]);
