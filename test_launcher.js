@@ -1,5 +1,6 @@
 import * as memorySet from './test/1_memory.js';
 import * as functionSet from './test/2_function.js';
+import * as objectSet from './test/3_object.js';
 
 function CheckAnswer(func, answer, errorlist){
     var result = func();
@@ -120,4 +121,4 @@ function TestSets(sets){
     }
 }
 
-TestSets([memorySet, functionSet]);
+TestSets([memorySet, functionSet, objectSet]);
