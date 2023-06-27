@@ -13,7 +13,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\test_launcher.js",
+            "program": "${workspaceFolder}/test_launcher.js",
             "args": [""]
         },{
             "type": "node",
@@ -22,7 +22,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\test_launcher.js"
+            "program": "${workspaceFolder}/test_launcher.js"
         }
     ]
 }
