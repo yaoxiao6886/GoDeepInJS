@@ -27,11 +27,27 @@ export function FillIn_ObjectFunctions(){
     }
 
     var a = new constructStudent("张三", 90, 20, 50);
-    if(a.name == undefined){
+    if(a.Sum == undefined){
         return
     }
 
     return a.Sum() == 160 && a.SelectMajor() == "汉语言"
+}
+
+//在上一题的基础上添加Revard函数
+//Revard函数: 学生在竞赛中获奖, 在考试中可以给对应科目加分
+export function FillIn_ObjectFunctions(){
+    var constructStudent = function(name, chinese, math, english){
+    
+    }
+
+    var a = new constructStudent("张三", 90, 20, 50);
+    a.Revard("english", 50); //英语科目竞赛获奖, 加50分
+    if(a.Sum == undefined){
+        return
+    }
+
+    return a.Sum() == 210 && a.SelectMajor() == "同声传译"
 }
 
 export function FillIn_SchoolSelect(){
@@ -50,6 +66,8 @@ export function FillIn_SchoolSelect(){
     var studeng_g = new constructStudent("虚竹", 80, 20, 70);
     var studeng_h = new constructStudent("慕容复", 10, 20, 30);
 
+    studeng_g.Revard("math", 80);
+
     var students = [studeng_a, studeng_b, studeng_c, studeng_d, studeng_e, studeng_f, studeng_g, studeng_h ];
 
     //请填空, 根据学生筛选出专业最高的人以录取(返回该对象)
@@ -65,5 +83,5 @@ export function FillIn_SchoolSelect(){
         return;
     }
 
-    return chineseStudent.name == "赵六" && mathStudent.name == "李四" && englishStudent.name == "王五";
+    return chineseStudent.name == "赵六" && mathStudent.name == "虚竹" && englishStudent.name == "王五";
 }
