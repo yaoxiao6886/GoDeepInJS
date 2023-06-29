@@ -36,9 +36,11 @@ export function FillIn_ObjectFunctions(){
 
 //在上一题的基础上添加Revard函数
 //Revard函数: 学生在竞赛中获奖, 在考试中可以给对应科目加分
-export function FillIn_ObjectFunctions(){
+export function FillIn_ObjectFunctions_Score(){
     var constructStudent = function(name, chinese, math, english){
-    
+        this.Revard = function(c, score){
+
+        }
     }
 
     var a = new constructStudent("张三", 90, 20, 50);
@@ -54,7 +56,9 @@ export function FillIn_SchoolSelect(){
 
     //请填空, 按照上面两题构造学生
     var constructStudent = function(name, chinese, math, english){
-    
+        this.Revard = function(c, score){
+            
+        }
     }
 
     var studeng_a = new constructStudent("张三", 90, 20, 50);

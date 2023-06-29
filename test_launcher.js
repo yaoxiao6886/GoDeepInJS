@@ -1,6 +1,7 @@
 import * as memorySet from './test/1_memory.js';
 import * as functionSet from './test/2_function.js';
 import * as objectSet from './test/3_object.js';
+import * as closureSet from './test/4_closure.js';
 
 function CheckAnswer(func, answer, errorlist){
     var result = func();
@@ -39,6 +40,7 @@ function TestSet(set){
         var result = -1;
         
         if(funcName.indexOf("FillIn_")!=-1){
+            //证明是填空题
             var fillInResult = set[funcName]();
             switch(fillInResult){
                 case true:
@@ -52,7 +54,13 @@ function TestSet(set){
                     break;
             }
         }else{
-            result = CheckAnswer( set[funcName], set["Answer_"+funcName], errorList);
+            //证明是选择题
+            if(set["Answer_"+funcName]==null){
+                console.error(`${set.TestName}的选择题${funcName}没有找到答案项, 请出题人修正`);
+                result = 0;
+            }else{
+                result = CheckAnswer( set[funcName], set["Answer_"+funcName], errorList);
+            }
         }
        
         switch(result){
@@ -121,4 +129,4 @@ function TestSets(sets){
     }
 }
 
-TestSets([memorySet, functionSet, objectSet]);
+TestSets([memorySet, functionSet, objectSet, closureSet]);
