@@ -40,6 +40,22 @@ export function TestIIFE(){
     return result;
 }
 
+export var Answer_Test_Multi_Closure = 0;
+export function Test_Multi_Closure(){
+
+    var i = 2;
+    function Outside(){
+        var j = 3;
+
+        return function (){
+            j + i;
+        }();
+    }
+
+    i++;
+    return Outside();
+}
+
 
 export var Answer_TestFunc = "0";
 export function TestFunc(){
