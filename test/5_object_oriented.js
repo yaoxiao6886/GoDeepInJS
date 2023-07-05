@@ -98,8 +98,36 @@ export function FillIn_Buy(){
         return;
     }
     
-    return  customers[0].name == "A"  && customers[0].money == 2 && customers[0].GetItems() == ["面包", "火腿肠"] &&
-            customers[1].name == "B"  && customers[1].money == 33 && customers[1].GetItems() == ["薯片", "可乐", "纸巾"] &&
-            customers[2].name == "C"  && customers[2].money == 5 && customers[2].GetItems() == [] &&
+    return  customers[0].name == "A"  && customers[0].money == 2 && customers[0].GetItems().length == 2 &&
+            customers[1].name == "B"  && customers[1].money == 33 && customers[1].GetItems().length == 3 &&
+            customers[2].name == "C"  && customers[2].money == 5 && customers[2].GetItems().length == 0 &&
             shop.money == 25
+}
+
+
+/**
+ * 交换背包案例
+ * 现在有两个同学 小张和小王
+ * 小张: 身上带了50块钱 背了个背包 包里有一个面包
+ * 小王: 身上带了10块钱 背了个背包 包里有一袋饼干
+ * 
+ * 现在两个人出去玩, 都买了一瓶水放到背包里, 水10块钱
+ * 小张往包里放了10块钱, 小王觉得包沉, 于是小张跟小王交换了背包
+ * 
+ * 问:  现在小张身上有多少钱? 包里有多少钱? 包里还有什么东西?
+ *      现在小王身上有多少钱? 包里有多少钱? 包里还有什么东西?
+ */
+export function FillIn_ExchangeBag(){
+    var zhang = {}
+    var wang = {}
+
+    if(zhang.bag == undefined || wang.bag == undefined){
+        return;
+    }
+
+    return  zhang.money==30 && zhang.bag.money == 0 && zhang.bag.items.count == 2 &&  
+            zhang.bag.items[0] == "饼干" && zhang.bag.items[1] == "水" &&
+            wang.money ==0 && wang.bag.money == 10 && wang.bag.items.count == 2 &&
+            wang.bag.itemsp[0] == "面包" && wang.bag.items[1] == "水"
+
 }
