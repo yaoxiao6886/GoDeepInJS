@@ -3,6 +3,7 @@ import * as functionSet from './test/2_function.js';
 import * as objectSet from './test/3_object.js';
 import * as closureSet from './test/4_closure.js';
 import * as oopSet from './test/5_object_oriented.js';
+import * as algorithm from './test/6_algorithm.js';
 
 function CheckAnswer(func, answer, errorlist){
     var result = func();
@@ -130,4 +131,4 @@ function TestSets(sets){
     }
 }
 
-TestSets([memorySet, functionSet, objectSet, closureSet, oopSet]);
+TestSets([memorySet, functionSet, objectSet, closureSet, oopSet,algorithm]);
