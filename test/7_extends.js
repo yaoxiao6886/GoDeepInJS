@@ -1,6 +1,6 @@
 export var TestName = "extends";
 
-export var Answer_TestExtend = "85";
+export var Answer_TestExtend = "0";
 export function TestExtend(){
     class A {
         v = 10;
@@ -40,7 +40,7 @@ export function TestExtend(){
     return result;
 }
 
-export var Answer_TestExtend_Override = "88";
+export var Answer_TestExtend_Override = "0";
 export function TestExtend_Override(){
     class A {
         v = 10;
@@ -81,25 +81,26 @@ export function TestExtend_Override(){
     return result;
 }
 
-export var Answer_TestStatic = "73";
+export var Answer_TestStatic = "0";
 export function TestStatic(){
     class A {
         static v = 0;
         other = 8;
         fun(){
-            v++;
-            other++;
+            A.v++;
+            this.other++;
         }
 
         static staticFun(){
-            v++;
+            A.v++;
         }
     }
     
     class B extends A {
         
         fun(){
-            other--;
+            A.v--;
+            this.other--;
         }
 
     }
@@ -110,15 +111,58 @@ export function TestStatic(){
     result += a.other;
     result += A.v;
     let b = new B();
-        b.fun();
+    b.fun();
     result += b.other;
     result += A.v;
 
     A.staticFun();
-    result += A.v;
+    try{
+        B.staticFun();
+    }catch(e){
+
+    }
+    result += B.v;
     
     return result;
 }
+
+//各种车的情况 时间 耗油 耗电 Write a Java program to create a vehicle class hierarchy. The base class should be Vehicle, with subclasses Truck, Car and Motorcycle. Each subclass should have properties such as make, model, year, and fuel type. Implement methods for calculating fuel efficiency, distance traveled, and maximum speed.
+
+/**
+ * 现在有几种车 特斯拉 埃安 大众 宝马 捷安特
+ * 其中 特斯拉时速 100km/h 耗电量1w/100km  
+ *      埃安时速   80km/h 耗电量0.5w/100km
+ *      大众时速    50km/h 耗油量0.5L/100km
+ *      宝马时速   100km/h 耗油量1L/100km
+ *      捷安特     10km/h  耗饭量10碗米饭/100km
+ * 
+ * 问现在几种交通工具都行驶500km, 问各自耗费的时间和消耗
+ */
+export function FillIn_Cars(){
+    var tesla = null;
+    var aion = null;
+    var vorks  =null;
+    var BMW = null;
+    var giant = null;
+
+    if(tesla==null || aion==null || vorks==null || BMW==null || giant == null){
+        return;
+    }
+
+    var drives = [tesla, aion, vorks, BMW, giant]
+    for(var i =0; i<drives.length; i++){
+        drives[i].drive(500);
+    }
+
+    return tesla.GetHours() == 5 && tesla.GetElec() == 5 && tesla.GetWheelCount() == 4 /* 轮子数 */ && tesla.GetEneryType() == "Ele" /* 能量类型 */&&
+            aion.GetHours() == 6.25 && aion.GetElec() == 2.5 && aion.GetWheelCount() == 4 && aion.GetEneryType() == "Ele" &&
+            vorks.GetHours() == 10 && vorks.GetOil() == 2.5 && vorks.GetWheelCount() == 4 && vorks.GetEneryType() == "Oil" &&
+            BMW.GetHours() == 5 && BMW.GetElec() == 5 && BMW.GetWheelCount() == 4 && BMW.GetEneryType() == "Oil" &&
+            giant.GetHours() == 50 && giant.GetRice() == 50 && giant.GetWheelCount() == 2 && giant.GetEneryType() == "Person"
+}
+//可选题 动物 鱼 狗 鸟 问有几条腿 时间 鸟问飞了多高
+
+
 
 /**
  * 现在有一个自产自销的农场, 有两位员工, 小张和小王. 他们两个有一个经理, 小李.
@@ -166,12 +210,77 @@ export function FillIn_Employ(){
             li.GetTotalSelledCount() == 32
 }
 
-// Write a Java program to create a class called Employee with methods called work() and getSalary(). Create a subclass called HRManager that overrides the work() method and adds a new method called addEmployee().
+/**
+ * 现在有三个窗口 个人信息 最新消息 以及公司通知
+ * 其中 个人信息有一个方法叫做GetPersonInfo 可以获知用户名字叫"Hello"
+ *      最新消息有一个方法叫GetNews 可以获知消息为"工资条"
+ *      公司通知有一个方法叫GetNotice 可以知道通知为"涨工资了"
+ * 
+ *      窗口可以打开, 关闭. 窗口分为普通窗口和全屏窗口两类, 
+ *      普通窗口谁后打开谁就在最前, 打开的普通窗口可以切换前后顺序, 即Foreground哪个窗口, 哪个窗口就在队列最前面
+ *      全屏窗口打开时 其他窗口需要关闭 即窗口状态为close 全屏窗口关闭时 需要把之前关闭的窗口打开 而且保持原来的顺序
+ */
+export function FillIn_Window(){
 
-//各种车的情况 时间 耗油 耗电 Write a Java program to create a vehicle class hierarchy. The base class should be Vehicle, with subclasses Truck, Car and Motorcycle. Each subclass should have properties such as make, model, year, and fuel type. Implement methods for calculating fuel efficiency, distance traveled, and maximum speed.
+    //-----------------------修改此部分, 让后续逻辑正常运行--------------------------
+    var personInfoWindow = null;
+    var newsWindow = null;
+    var noticeWindow = null;
+    
+    class WindowManager{
 
-//学生和老师做自我介绍
+        static Open(window){
 
-//动物 鱼 狗 鸟 问有几条腿 时间 鸟问飞了多高
+        }
 
-//先通过选择题来判断对理解不理解
+        static Close(window){
+
+        }
+
+        static GetWindow(sequence){
+
+        }
+
+    }
+    //---------------------------------------------------------------
+
+    if(personInfoWindow==null || newsWindow == null || noticeWindow == null){
+        return;
+    }
+
+    if(personInfoWindow.GetState() != "Closed" && newsWindow.GetState()!="Closed"){
+        return false;
+    }
+
+    WindowManager.Open(personInfoWindow);
+    WindowManager.Open(newsWindow);
+    if(WindowManager.GetWindow(0)!=newsWindow || WindowManager.GetWindow(1)!=personInfoWindow){
+        return false;
+    }
+    if(personInfoWindow.GetState() != "Opened" && newsWindow.GetState()!="Opened"){
+        return false;
+    }
+
+    WindowManager.Foreground(personInfoWindow)
+    if(WindowManager.GetWindow(0)!=personInfoWindow || WindowManager.GetWindow(1)!=newsWindow){
+        return false;
+    }
+
+    WindowManager.Open(noticeWindow);
+    if(personInfoWindow.GetState() != "Closed" && newsWindow.GetState()!="Closed"){
+        return false;
+    }
+    if(WindowManager.GetWindow(0)!=noticeWindow ){
+        return false;
+    }
+    
+    WindowManager.Close(noticeWindow);
+    if(personInfoWindow.GetState() != "Opened" && newsWindow.GetState()!="Opened"){
+        return false;
+    }
+    if(WindowManager.GetWindow(0)!=personInfoWindow || WindowManager.GetWindow(1)!=newsWindow){
+        return false;
+    }
+
+    return true;
+}
