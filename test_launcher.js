@@ -5,6 +5,7 @@ import * as closureSet from './test/4_closure.js';
 import * as oopSet from './test/5_object_oriented.js';
 import * as algorithm from './test/6_algorithm.js';
 import * as extend from './test/7_extends.js';
+import * as prototype from './test/8_prototype.js'
 
 
 function CheckAnswer(func, answer, errorlist){
@@ -135,5 +136,5 @@ function TestSets(sets){
 
 TestSets([memorySet, functionSet, objectSet, 
           closureSet, oopSet,algorithm,
-          extend
+          extend, prototype
         ]);
