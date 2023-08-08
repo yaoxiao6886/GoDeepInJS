@@ -12,8 +12,8 @@
   "main": "clean.js",
   "directories": {
     "test": "test"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
   }
-  
 }
-
-
