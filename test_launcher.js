@@ -9,13 +9,13 @@ import * as prototype from './test/8_prototype.js'
 import * as async from './test/9_async.js'
 
 
-async function CheckAnswer(func, answer, errorlist){
-    var result = await CallFunc(func);
+async function CheckAnswer(func, answer, errorlist){   
     if(answer == 0){
         //证明该题目尚未回答
         return 0;
     }
 
+    var result = await CallFunc(func);
     if(result != answer){
         
         return 1;

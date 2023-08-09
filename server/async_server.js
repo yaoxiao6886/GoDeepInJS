@@ -13,4 +13,13 @@ app.listen(SERVER_ID, ()=>{
 });
 
 
+app.get('/TestAdd_GetPar1', (request, response)=>{
+    response.send('2');
+});
+
+app.get('/TestAdd_GetPar2', (request, response)=>{
+    response.send('3');
+});
+
+
 
