@@ -6,10 +6,11 @@ import * as oopSet from './test/5_object_oriented.js';
 import * as algorithm from './test/6_algorithm.js';
 import * as extend from './test/7_extends.js';
 import * as prototype from './test/8_prototype.js'
+import * as async from './test/9_async.js'
 
 
-function CheckAnswer(func, answer, errorlist){
-    var result = func();
+async function CheckAnswer(func, answer, errorlist){
+    var result = await CallFunc(func);
     if(answer == 0){
         //证明该题目尚未回答
         return 0;
@@ -29,11 +30,22 @@ function GetAllMethods(object) {
     });
 }
 
+async function CallFunc(func){
+    if( func.constructor.name != 'AsyncFunction'){
+        return func();
+    }else{
+        var promiseFunc =  new Promise(func);
+        var r = await promiseFunc;
+    
+        return r;
+    }    
+}
+
 /**
  * 
  * @param {Object} set 试卷
  */
-function TestSet(set){
+async function TestSet(set){
     var functionNameSet =  GetAllMethods(set);
     var errorList = [];
     var ignoreCount = 0;
@@ -46,7 +58,8 @@ function TestSet(set){
         
         if(funcName.indexOf("FillIn_")!=-1){
             //证明是填空题
-            var fillInResult = set[funcName]();
+            var fillInResult = await CallFunc( set[funcName] );
+            //May Promise
             switch(fillInResult){
                 case true:
                     result = 2;
@@ -60,11 +73,12 @@ function TestSet(set){
             }
         }else{
             //证明是选择题
+            //May Promise
             if(set["Answer_"+funcName]==null){
                 console.error(`${set.TestName}的选择题${funcName}没有找到答案项, 请出题人修正`);
                 result = 0;
             }else{
-                result = CheckAnswer( set[funcName], set["Answer_"+funcName], errorList);
+                result = await CheckAnswer( set[funcName], set["Answer_"+funcName], errorList);
             }
         }
        
@@ -92,11 +106,11 @@ function TestSet(set){
  * 
  * @param {Array[Object]} sets 试卷集
  */
-function TestSets(sets){
+async function TestSets(sets){
     var infoList = [];
 
     for(var i=0; i<sets.length; i++){
-        var result = TestSet(sets[i]);        
+        var result = await TestSet(sets[i]);        
 
         //处理错误
         if(result.errorList.length > 0){
@@ -134,7 +148,7 @@ function TestSets(sets){
     }
 }
 
-TestSets([memorySet, functionSet, objectSet, 
+await TestSets([memorySet, functionSet, objectSet, 
           closureSet, oopSet,algorithm,
-          extend, prototype
+          extend, prototype, async
         ]);

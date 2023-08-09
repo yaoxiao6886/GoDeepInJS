@@ -9,20 +9,26 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Test",
+            "name": "client",
             "skipFiles": [
                 "<node_internals>/**"
             ],
+            "console": "internalConsole",
             "program": "${workspaceFolder}/test_launcher.js",
-            "args": [""]
+            "args": [""],
         },{
             "type": "node",
             "request": "launch",
-            "name": "Clean",
+            "name": "server",
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/test_launcher.js"
+            "runtimeExecutable": "nodemon",
+            "console": "internalConsole",
+            "cwd": "${workspaceFolder}/server",
+            "runtimeArgs": [
+                "async_server.js"
+            ]
         }
     ]
 }
