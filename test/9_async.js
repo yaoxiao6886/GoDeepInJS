@@ -2,7 +2,7 @@ import { XMLHttpRequest } from 'xmlhttprequest'
 
 export var TestName = "async";
 
-export var Answer_TestSetTimeOut = 1;
+export var Answer_TestSetTimeOut = 0;
 export async function TestSetTimeOut(resolve, reject){
     var result = 0;
     function TimeOutCallBack(){
@@ -14,7 +14,7 @@ export async function TestSetTimeOut(resolve, reject){
     result = 1;
 }
 
-export var Answer_TestSetTimeOut2 = 2;
+export var Answer_TestSetTimeOut2 = 0;
 export async function TestSetTimeOut2(resolve, reject){
     var result = 0;
     function TimeOutCallBack(){
@@ -45,7 +45,7 @@ export async function TestSetTimeOut3(resolve, reject){
     result = 1;
 }
 
-export var Answer_TestPromise = 2;
+export var Answer_TestPromise = 0;
 export async function TestPromise(resolve, reject){
     var result = 0;
     var p = new Promise( (res, rej)=>{
@@ -61,7 +61,7 @@ export async function TestPromise(resolve, reject){
     resolve(result)
 }
 
-export var Answer_TestPromise2 = 2;
+export var Answer_TestPromise2 = 0;
 export async function TestPromise2(resolve, reject){
     var result = 0;
     setTimeout(
@@ -84,7 +84,7 @@ export async function TestPromise2(resolve, reject){
     result = 3;
 }
 
-export var Answer_TestAwaitPromise = 2;
+export var Answer_TestAwaitPromise = 0;
 export async function TestAwaitPromise(resolve, reject){
     var result = 0;
     setTimeout(
@@ -105,7 +105,7 @@ export async function TestAwaitPromise(resolve, reject){
     resolve(result);
 }
 
-export var Answer_TestAwaitFunc = "2";
+export var Answer_TestAwaitFunc = "0";
 export async function TestAwaitFunc(resolve, reject){
     var result = 0;
     setTimeout(()=>{
@@ -123,7 +123,7 @@ export async function TestAwaitFunc(resolve, reject){
     Test().then(r=>result=r);
 }
 
-export var Answer_TestAwaitFunc2 = 2;
+export var Answer_TestAwaitFunc2 = 0;
 export async function TestAwaitFunc2(resolve, reject){
     var result = 0;
     setTimeout(()=>{
@@ -144,7 +144,7 @@ export async function TestAwaitFunc2(resolve, reject){
     result = await Test();
 }
 
-export var Answer_TestAsyncAwait = 1;
+export var Answer_TestAsyncAwait = 0;
 export async function TestAsyncAwait(resolve, reject){
     var result = 0;
     async function fetchUrl(url) {
@@ -158,7 +158,7 @@ export async function TestAsyncAwait(resolve, reject){
     resolve(result)
 } 
 
-export var Answer_TestAsyncAwait2 = 1;
+export var Answer_TestAsyncAwait2 = 0;
 export async function TestAsyncAwait2(resolve, reject){
     var result = 0;
     async function fetchUrl(url) {
